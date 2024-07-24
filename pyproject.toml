@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "replicate-API-project"
+version = "0.1.0"
+description = "A project to run custom models using Replicate’s API."
+authors = ["Teoman Selcuk <teomanege.selcuk@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+replicate = "^0.29.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.1"
+
+[tool.pyright]  # Configuration for the Pyright static type checker
+useLibraryCodeForTypes = true  # Use library code for type inference
+exclude = [".cache"]  # Exclude the ".cache" directory from type checking
+
+[build-system]  # Build system configuration
+requires = ["poetry-core>=1.0.0"]  # Required version of poetry-core
+build-backend = "poetry.core.masonry.api"  # Build backend for Poetry
+
+[[tool.poetry.packages]]
+include = "replicate" # Package configuration for the replicate package
+
+[tool.pytest.ini_options]
+# Specify additional paths to be added to sys.path
+# "replicate" and "tests" directories will be included in the Python path when running pytest
+python_paths = ["replicate", "tests"]
